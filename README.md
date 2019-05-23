@@ -28,6 +28,9 @@ local clientbtns = ez.btntable {
 }
 ```
 
+See the [API documentation](https://jcrd.github.io/awesome-ez/) for
+descriptions of all functions.
+
 ### Modifiers
 
 The following modifiers can be identified by their shorthand characters
