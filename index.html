@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>awesome-ez API documentation</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>awesome-ez</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>ez</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ez</code></h1>
+<p>Create key and button bindings from simple definitions.</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: 2019 James Reed</li>
+        <li><strong>Author</strong>: James Reed &lt;jcrd@tuta.io&gt; et al.</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#util.cb_from_table">util.cb_from_table (cb)</a></td>
+	<td class="summary">Convert a table into a callable function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#util.parse_key">util.parse_key (keydef)</a></td>
+	<td class="summary">Parse a key definition string into modifiers and a key.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#util.parse_button">util.parse_button (btndef)</a></td>
+	<td class="summary">Parse a button definition string into modifiers and a button.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#key">key (keydef, cb)</a></td>
+	<td class="summary">Create a key binding from a key definition string and callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btn">btn (btndef, cb)</a></td>
+	<td class="summary">Create a button binding from a button definition string and callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#keytable">keytable (tbl)</a></td>
+	<td class="summary">Create key bindings for elements of a table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btntable">btntable (tbl)</a></td>
+	<td class="summary">Create button bindings for elements of a table.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "util.cb_from_table"></a>
+    <strong>util.cb_from_table (cb)</strong>
+    </dt>
+    <dd>
+    Convert a table into a callable function.
+<p> The first element of the table should be a function, followed by arguments
+ to this function.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cb</span>
+         The callback or a table describing the callback.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The callback.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> cb = ez.util.cb_from_table({awful.spawn, <span class="string">"xterm"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "util.parse_key"></a>
+    <strong>util.parse_key (keydef)</strong>
+    </dt>
+    <dd>
+    Parse a key definition string into modifiers and a key.
+<p> The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
+<p> Key names that are longer than 1 character must be surrounded by <>.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keydef</span>
+         The key definition string.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table of modifiers and the key.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> modkeys, key = ez.util.parse_key(<span class="string">"M-&lt;Return&gt;"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "util.parse_button"></a>
+    <strong>util.parse_button (btndef)</strong>
+    </dt>
+    <dd>
+    Parse a button definition string into modifiers and a button.
+<p> The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">btndef</span>
+         The button definition string.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table of modifiers and the button.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> modkeys, btn = ez.util.parse_button(<span class="string">"M-1"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "key"></a>
+    <strong>key (keydef, cb)</strong>
+    </dt>
+    <dd>
+    Create a key binding from a key definition string and callback.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keydef</span>
+         The key definition string.
+        </li>
+        <li><span class="parameter">cb</span>
+         The callback or table describing the callback.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table with the key objects.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btn"></a>
+    <strong>btn (btndef, cb)</strong>
+    </dt>
+    <dd>
+    Create a button binding from a button definition string and callback.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">btndef</span>
+         The button definition string.
+        </li>
+        <li><span class="parameter">cb</span>
+         The callback or table describing the callback.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table with the button objects.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "keytable"></a>
+    <strong>keytable (tbl)</strong>
+    </dt>
+    <dd>
+    Create key bindings for elements of a table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tbl</span>
+         The table of key bindings.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table containing created key objects.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btntable"></a>
+    <strong>btntable (tbl)</strong>
+    </dt>
+    <dd>
+    Create button bindings for elements of a table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tbl</span>
+         The table of button bindings.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A table containing created button objects.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-05-23 08:55:10 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
