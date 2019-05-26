@@ -55,9 +55,13 @@ end
 
 --- Parse a key definition string into modifiers and a key.
 --
+-- Key definition strings consist of modifier characters and a key separated
+-- by hyphens, e.g. "M-S-x" is the combination of Mod4, Shift, and the x key.
+--
 -- The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
 --
--- Key names that are longer than 1 character must be surrounded by <>.
+-- Key names longer than 1 character must be surrounded by <>,
+-- e.g. "M-&lt;Return&gt;".
 --
 -- @param keydef The key definition string.
 -- @usage local modkeys, key = ez.util.parse_key("M-<Return>")
@@ -78,6 +82,9 @@ function ez.util.parse_key(keydef)
 end
 
 --- Parse a button definition string into modifiers and a button.
+--
+-- Button definition strings consist of modifier characters and a key separated
+-- by hyphens, e.g. "M-S-1" is the combination of Mod4, Shift, and button 1.
 --
 -- The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
 --
