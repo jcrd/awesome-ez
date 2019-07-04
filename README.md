@@ -4,6 +4,14 @@ awesome-ez is a library for [Awesome](https://github.com/awesomeWM/awesome)
 window manager that aims to simplify the creation of key and button bindings.
 It is based on code from the old Awesome wiki.
 
+## Installation
+
+```
+$ git clone https://github.com/jcrd/awesome-ez.git
+$ cd awesome-ez
+$ luarocks make --local
+```
+
 ## Usage
 
 Require the library:
