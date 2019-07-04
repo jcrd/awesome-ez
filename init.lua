@@ -40,7 +40,6 @@ ez.util = {}
 -- @param cb The callback or a table describing the callback.
 -- @usage local cb = ez.util.cb_from_table({awful.spawn, "xterm"})
 -- @return The callback.
--- @function util.cb_from_table
 function ez.util.cb_from_table(cb)
     if type(cb) == "table" and
         not (getmetatable(cb) and getmetatable(cb).__call) then
@@ -66,7 +65,6 @@ end
 -- @param keydef The key definition string.
 -- @usage local modkeys, key = ez.util.parse_key("M-<Return>")
 -- @return A table of modifiers and the key.
--- @function util.parse_key
 function ez.util.parse_key(keydef)
     local modkeys = {}
     for _, key in ipairs(split(keydef, "-")) do
@@ -91,7 +89,6 @@ end
 -- @param btndef The button definition string.
 -- @usage local modkeys, btn = ez.util.parse_button("M-1")
 -- @return A table of modifiers and the button.
--- @function util.parse_button
 function ez.util.parse_button(btndef)
     if type(btndef) == "number" then
         return {}, btndef
