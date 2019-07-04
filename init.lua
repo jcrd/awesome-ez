@@ -2,7 +2,7 @@
 --
 -- @author James Reed &lt;jcrd@tuta.io&gt; et al.
 -- @copyright 2019 James Reed
--- @module ez
+-- @module awesome-ez
 
 local awful = require("awful")
 local gtable = require("gears.table")
