@@ -9,7 +9,7 @@ It is based on code from the old Awesome wiki.
 ```
 $ git clone https://github.com/jcrd/awesome-ez.git
 $ cd awesome-ez
-$ luarocks make --local
+$ luarocks make --local rockspec/awesome-ez-devel-1.rockspec
 ```
 
 ## Usage
