@@ -56,14 +56,13 @@ end
 --
 -- Key definition strings consist of modifier characters and a key separated
 -- by hyphens, e.g. "M-S-x" is the combination of Mod4, Shift, and the x key.
+-- If the key is surrounded by <>, it is interpreted as a key group, e.g.
+-- "M-<numrow>" uses the modifier Mod4 and the key group "numrow".
 --
 -- The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
 --
--- Key names longer than 1 character must be surrounded by <>,
--- e.g. "M-&lt;Return&gt;".
---
 -- @param keydef The key definition string.
--- @usage local modkeys, key = ez.util.parse_key("M-<Return>")
+-- @usage local modkeys, key = ez.util.parse_key("M-Return")
 -- @return A table of modifiers and the key.
 function ez.util.parse_key(keydef)
     local modkeys = {}
@@ -71,8 +70,9 @@ function ez.util.parse_key(keydef)
         if modifiers[key] ~= nil then
             table.insert(modkeys, modifiers[key])
         else
-            if #key ~= 1 and string.sub(key, 1, 1) ~= "#" then
-                key = string.match(key, "<(%w+)>")
+            local group = string.match(key, "<(%w+)>")
+            if group then
+                return modkeys, nil, group
             end
             return modkeys, key
         end
@@ -109,8 +109,15 @@ end
 -- @param cb The callback or table describing the callback.
 -- @return A table with the key objects.
 function ez.key(keydef, cb)
-    local modkeys, key = ez.util.parse_key(keydef)
-    return awful.key.new(modkeys, key, ez.util.cb_from_table(cb))
+    local modkeys, key, group = ez.util.parse_key(keydef)
+    if group then
+        return awful.key {
+            keygroup = group,
+            modifiers = modkeys,
+            on_press = cb,
+        }
+    end
+    return awful.key(modkeys, key, ez.util.cb_from_table(cb))
 end
 
 --- Create a button binding from a button definition string and callback.
@@ -132,7 +139,7 @@ function ez.keytable(tbl)
     for keydef, cb in pairs(tbl) do
         table.insert(res, ez.key(keydef, cb))
     end
-    return gtable.join(unpack(res))
+    return res
 end
 
 --- Create button bindings for elements of a table.
@@ -144,7 +151,7 @@ function ez.btntable(tbl)
     for btndef, cb in pairs(tbl) do
         table.insert(res, ez.btn(btndef, cb))
     end
-    return gtable.join(unpack(res))
+    return res
 end
 
 return ez
