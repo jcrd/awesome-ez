@@ -22,7 +22,7 @@ local ez = require("awesome-ez")
 Use `ez.keytable` to define key bindings:
 ```lua
 local globalkeys = ez.keytable {
-    ["M-<Return>"] = {awful.spawn, "xterm"},
+    ["M-Return"] = {awful.spawn, "xterm"},
     ...
 }
 ```
@@ -39,8 +39,6 @@ local clientbtns = ez.btntable {
 Binding definition strings consist of modifier characters and a key or button
 separated by hyphens, e.g. `M-S-x` is the combination of `Mod4`, `Shift`, and
 the `x` key.
-
-Key names longer than 1 character must be surrounded by `<>`, e.g. `M-<Return>`.
 
 See the [API documentation](https://jcrd.github.io/awesome-ez/) for
 descriptions of all functions.
