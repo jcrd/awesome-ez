@@ -9,4 +9,7 @@ gh-pages:
 ldoc: gh-pages
 	ldoc . -d gh-pages
 
-.PHONY: rock ldoc
+serve: gh-pages
+	python -m http.server --directory gh-pages
+
+.PHONY: rock ldoc serve
