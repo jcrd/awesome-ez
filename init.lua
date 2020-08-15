@@ -57,7 +57,7 @@ end
 -- Key definition strings consist of modifier characters and a key separated
 -- by hyphens, e.g. "M-S-x" is the combination of Mod4, Shift, and the x key.
 -- If the key is surrounded by <>, it is interpreted as a key group, e.g.
--- "M-<numrow>" uses the modifier Mod4 and the key group "numrow".
+-- "M-&ltnumrow&gt uses the modifier Mod4 and the key group "numrow".
 --
 -- The modifier key strings are: M = Mod4, A = Mod1, S = Shift, C = Control.
 --
