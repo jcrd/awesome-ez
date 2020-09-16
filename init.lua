@@ -1,7 +1,9 @@
+-- This project is licensed under the MIT License (see LICENSE).
+
 --- Create key and button bindings from simple definitions.
 --
 -- @author James Reed &lt;jcrd@tuta.io&gt; et al.
--- @copyright 2019 James Reed
+-- @copyright 2019-2020 James Reed
 -- @module awesome-ez
 
 local awful = require("awful")

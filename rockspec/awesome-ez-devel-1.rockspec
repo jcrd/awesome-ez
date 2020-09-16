@@ -7,7 +7,7 @@ source = {
 description = {
     summary = "AwesomeWM library for simplifying key and button bindings",
     homepage = "https://github.com/jcrd/awesome-ez",
-    license = "GPL-3.0",
+    license = "MIT",
 }
 dependencies = {
     "lua >= 5.1",
