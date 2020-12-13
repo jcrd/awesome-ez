@@ -1,4 +1,1 @@
-FROM supplantr/toolbox
-
-RUN dnf install -y lua-ldoc
-RUN dnf install -y luarocks
+FROM supplantr/lua-toolbox
