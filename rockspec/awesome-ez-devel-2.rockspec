@@ -1,8 +1,8 @@
 package = "awesome-ez"
-version = "0.3.0-1"
+version = "devel-2"
 source = {
-    url = "git://github.com/jcrd/awesome-ez",
-    tag = "v0.3.0",
+    url = "git+https://github.com/jcrd/awesome-ez",
+    tag = "master",
 }
 description = {
     summary = "AwesomeWM library for simplifying key and button bindings",
