@@ -11,7 +11,7 @@ local gtable = require("gears.table")
 
 local ez = {}
 
-local modifiers = {
+ez.modifiers = {
     ["M"] = "Mod4",
     ["A"] = "Mod1",
     ["S"] = "Shift",
@@ -47,7 +47,7 @@ function ez.util.cb_from_table(cb)
         not (getmetatable(cb) and getmetatable(cb).__call) then
         local tbl = gtable.clone(cb, false)
         local func = table.remove(tbl, 1)
-        cb = function ()
+        cb = function()
             return func(unpack(tbl))
         end
     end
@@ -69,8 +69,8 @@ end
 function ez.util.parse_key(keydef)
     local modkeys = {}
     for _, key in ipairs(split(keydef, "-")) do
-        if modifiers[key] ~= nil then
-            table.insert(modkeys, modifiers[key])
+        if ez.modifiers[key] ~= nil then
+            table.insert(modkeys, ez.modifiers[key])
         else
             local group = string.match(key, "<(%w+)>")
             if group then
@@ -97,8 +97,8 @@ function ez.util.parse_button(btndef)
     end
     local modkeys = {}
     for _, key in ipairs(split(btndef, "-")) do
-        if modifiers[key] ~= nil then
-            table.insert(modkeys, modifiers[key])
+        if ez.modifiers[key] ~= nil then
+            table.insert(modkeys, ez.modifiers[key])
         else
             return modkeys, tonumber(key)
         end

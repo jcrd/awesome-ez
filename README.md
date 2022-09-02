@@ -7,19 +7,21 @@ It is based on code from the old Awesome wiki.
 ## Installation
 
 ```
-$ git clone https://github.com/jcrd/awesome-ez.git
-$ cd awesome-ez
-$ luarocks make --local rockspec/awesome-ez-devel-1.rockspec
+git clone https://github.com/jcrd/awesome-ez.git
+cd awesome-ez
+luarocks make --local rockspec/awesome-ez-devel-1.rockspec
 ```
 
 ## Usage
 
 Require the library:
+
 ```lua
 local ez = require("awesome-ez")
 ```
 
 Use `ez.keytable` to define key bindings:
+
 ```lua
 local globalkeys = ez.keytable {
     ["M-Return"] = {awful.spawn, "xterm"},
@@ -28,6 +30,7 @@ local globalkeys = ez.keytable {
 ```
 
 Use `ez.btntable` to define button bindings:
+
 ```lua
 local clientbtns = ez.btntable {
     ["1"] = function (c) client.focus = c end,
@@ -45,15 +48,21 @@ descriptions of all functions.
 
 ### Modifiers
 
-The following modifiers can be identified by their shorthand characters
+The following modifiers can be identified by their default shorthand characters
 in key and button definitions:
 
-Modifier | Character
--------- | ---------
-Mod4     | M
-Mod1     | A
-Shift    | S
-Control  | C
+Character | Modifier
+--------- | --------
+M         | Mod4
+A         | Mod1
+S         | Shift
+C         | Control
+
+The `modifiers` table can be customized:
+
+```lua
+ez.modifiers["M"] = "Mod1"
+```
 
 ## License
 
